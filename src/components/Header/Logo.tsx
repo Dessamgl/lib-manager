@@ -4,10 +4,10 @@ type LogoProps = {
   showLogoText: boolean;
 }
 
-export default function Logo({ showLogoText }: LogoProps) {
+export function Logo({ showLogoText }: LogoProps) {
   return (
     <Flex align="center">
-      <Image src="logo.png" alt="logo"  />
+      <Image src="/logo.png" alt="logo"  />
       { showLogoText && <Text fontSize={18} fontWeight="bold" ml={6}>LibManager</Text> }
     </Flex>
   )

@@ -1,23 +1,32 @@
-import { Box, Flex, Text, Image, useBreakpointValue } from "@chakra-ui/react";
-import Logo from "./Logo";
+import { Box, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Logo } from "./Logo";
 import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";
 
-export default function Header() {
+export function Header() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
 
   return (
-    <header>
-      <Box p={4} bg="#202024" display="flex" justifyContent="space-between">
-        { isWideVersion && <Logo showLogoText={isWideVersion}/>}
+    <Box bg="#202024">
+      <Flex
+        as="header"
+        height="20"
+        width="100%"
+        maxWidth={1480}
+        marginX="auto"
+        paddingX="6"
+        align="center"
+        justifyContent="space-between"
+      >
+          { isWideVersion && <Logo showLogoText={isWideVersion}/>}
 
-        <SearchBox />
+          <SearchBox />
 
-        <Profile showProfileData={isWideVersion}/>
-      </Box>
-    </header>
+          <Profile showProfileData={isWideVersion}/>
+      </Flex>
+    </Box>
   )
 }
