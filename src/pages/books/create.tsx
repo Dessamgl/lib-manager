@@ -1,10 +1,13 @@
 import { Flex, SimpleGrid } from "@chakra-ui/react";
-import React from "react";
+import Head  from 'next/head';
 import { Header, Sidebar } from "../../components";
 
 export default function CreateBook() {
   return (
     <Flex direction="column" height="100vh">
+      <Head>
+        <title>LibManager | Adicionar livro</title>
+      </Head>
       <Header />
 
       <Flex

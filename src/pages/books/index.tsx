@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue } from "@chakra-ui/react";
 
 import Link from "next/link";
+import Head  from 'next/head';
 import { Header, Sidebar } from "../../components";
 
 export default function BooksList() {
@@ -11,6 +12,9 @@ export default function BooksList() {
 
   return (
     <Box>
+      <Head>
+        <title>LibManager | Livros</title>
+      </Head>
       <Header />
 
       <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
