@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue, Badge } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Head  from 'next/head';
@@ -9,6 +9,34 @@ export default function BooksList() {
     base: false,
     lg: true,
   })
+
+  //TODO: mover para "constants" de "books"
+  enum STATUS_BOOK {
+    FREE = "livre",
+    RESERVED = "reservado",
+    BORROWED = "emprestado",
+    LATE = "atrasado",
+  }
+
+  let colorStatusBook: string;
+
+  //TODO: trocar para a variável com o status da api
+  switch(colorStatusBook) {
+    case STATUS_BOOK.FREE:
+      colorStatusBook = "green";
+    break;
+    case STATUS_BOOK.RESERVED:
+      colorStatusBook = "orange";
+    break;
+    case STATUS_BOOK.BORROWED:
+      colorStatusBook = "gray";
+    break;
+    case STATUS_BOOK.LATE:
+      colorStatusBook = "red";
+    break;
+    default:
+      colorStatusBook = "green";
+  }
 
   return (
     <Box>
@@ -58,7 +86,9 @@ export default function BooksList() {
                   24/07/22021
               </Td>
               <Td color="gray.200">
+                <Badge variant="solid" colorScheme={colorStatusBook}>
                   Livre
+                </Badge>
               </Td>
             </Tr>
             <Tr bg="gray.800" borderColor="gray.900" borderWidth="medium" >
@@ -73,7 +103,9 @@ export default function BooksList() {
                   24/07/22021
               </Td>
               <Td color="gray.200">
+                <Badge variant="solid" colorScheme={colorStatusBook}>
                   Livre
+                </Badge>
               </Td>
             </Tr>
             <Tr bg="gray.800" borderColor="gray.900" borderWidth="medium" >
@@ -88,7 +120,9 @@ export default function BooksList() {
                   24/07/22021
               </Td>
               <Td color="gray.200">
+                <Badge variant="solid" colorScheme={colorStatusBook}>
                   Livre
+                </Badge>
               </Td>
             </Tr>
           </Tbody>
