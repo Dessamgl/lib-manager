@@ -45,12 +45,18 @@ export default function BooksList() {
       </Head>
       <Header />
 
-      <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
+      <Flex 
+        w="100%" 
+        my="6" 
+        maxW={1480} 
+        mx="auto" 
+        px="6"
+      >
         <Sidebar />
         <Box flex="1">
         <Flex justifyContent="space-between">        
         <Heading size="lg" fontWeight="normal">Livros</Heading>
-        <Link href="/users/create" passHref>
+        <Link href="/books/create" passHref>
           <Button 
             as="a" 
             size="md" 
