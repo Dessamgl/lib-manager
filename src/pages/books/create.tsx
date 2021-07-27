@@ -4,6 +4,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Box, Flex, Heading, VStack, SimpleGrid, HStack, Button } from "@chakra-ui/react";
 import Head  from 'next/head';
 import Link from "next/link";
+import { useRouter } from 'next/router'
+
+
 import { Header, Input, Sidebar, Textarea } from "../../components";
 
 type RegisterBookFormData = {
@@ -25,6 +28,8 @@ const registerBookFormSchema = yup.object().shape({
 })
 
 export default function CreateBook() {
+  const router = useRouter()
+
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(registerBookFormSchema)
   })
@@ -33,6 +38,10 @@ export default function CreateBook() {
 
   const handleRegisterBook: SubmitHandler<RegisterBookFormData> = async (values) => {
     await new Promise(resolve => setTimeout(resolve, 2000))
+
+    //chamar o toast de sucesso aqui
+
+    router.push('/books')
   }
 
   return (
@@ -64,7 +73,7 @@ export default function CreateBook() {
           onSubmit={handleSubmit(handleRegisterBook)}
         >
           <VStack flexDirection="row">
-            <Box minChildWidth="240px" spacing={["6", "8"]} w="100%" flexDirection="row"paddingRight="6">
+            <Box  spacing={["6", "8"]} w="100%" flexDirection="row" paddingRight="6">
               <Input 
                 name="title" 
                 label="Título"
@@ -89,7 +98,7 @@ export default function CreateBook() {
               />
             </Box>
 
-            <Box minChildWidth="240px" spacing={["6", "8"]} w="100%" flexDirection="row">
+            <Box  spacing={["6", "8"]} w="100%" flexDirection="row">
               <Input 
                 name="pagesNumber" 
                 type="number" 
@@ -124,7 +133,7 @@ export default function CreateBook() {
             </Box>
           </VStack>
 
-            <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
+            <SimpleGrid  spacing={["6", "8"]} w="100%">
             <Textarea 
                 name="copyright" 
                 label="Direitos autorais" 

@@ -19,6 +19,8 @@ const TextareaBase: ForwardRefRenderFunction<HTMLTextAreaElement, TextareaProps>
         name={name} 
         id={name}
         size={size}
+        fontSize="md"
+        cursor="pointer"
         focusBorderColor="red.900"
         bgColor="gray.800"
         variant="filled"

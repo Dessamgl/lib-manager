@@ -49,8 +49,7 @@ export default function BooksList() {
         w="100%" 
         my="6" 
         maxW={1480} 
-        mx="auto" 
-        px="6"
+        mx="auto"
       >
         <Sidebar />
         <Box flex="1">
@@ -63,7 +62,7 @@ export default function BooksList() {
             fontSize="small" 
             colorScheme="red" 
           >
-            ALUGAR
+            ADICIONAR
           </Button>
         </Link>
         </Flex>
