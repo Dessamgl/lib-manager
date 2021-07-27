@@ -13,13 +13,12 @@ const TextareaBase: ForwardRefRenderFunction<HTMLTextAreaElement, TextareaProps>
   = ({ name, label, size = "lg", error = null,...rest }, ref ) => {
   return (
     <FormControl isInvalid={!!error}>
-      { !!label && <FormLabel color="gray.200" htmlFor={name}>{label}</FormLabel> }
+      { !!label && <FormLabel color="gray.200" paddingTop="3" htmlFor={name}>{label}</FormLabel> }
 
       <ChakraTextArea
         name={name} 
         id={name}
         size={size}
-        marginBottom="6"
         focusBorderColor="red.900"
         bgColor="gray.800"
         variant="filled"

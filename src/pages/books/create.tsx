@@ -22,10 +22,6 @@ const registerBookFormSchema = yup.object().shape({
   author: yup.string().required('Autor obrigatório'),
   synopsis: yup.string().required('Sinopse obrigatória'),
   pagesNumber: yup.number().required('Número de páginas obrigatória'),
-  relatedTags: yup.string(),
-  yearOfPublication: yup.number(),
-  isbn: yup.number(),
-  copyright: yup.string(),
 })
 
 export default function CreateBook() {
@@ -87,7 +83,7 @@ export default function CreateBook() {
                 name="synopsis" 
                 label="Sinopse" 
                 placeholder="Sinopse do livro"
-                height={154}
+                height={149}
                 error={errors.synopsis} 
                 {...register('synopsis')} 
               />
