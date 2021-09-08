@@ -3,12 +3,14 @@ import { Box, Button, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text
 import Link from "next/link";
 import Head  from 'next/head';
 import { Header, Sidebar } from "../../components";
+import { GetStaticProps } from "next";
+import { api } from "../../../services/api";
 
-export default function UsersCreate() {
-  const isWideVersion = useBreakpointValue({
-    base: false,
-    lg: true,
-  })
+interface UserProps {
+  name: string;
+}
+
+export default function UsersCreate({ name }: UserProps) {
 
   return (
     <Box>
@@ -26,7 +28,7 @@ export default function UsersCreate() {
         <Sidebar />
         <Box flex="1">
         <Flex justifyContent="space-between">        
-        <Heading size="lg" fontWeight="normal">Registrar novo usuário</Heading>
+        <Heading size="lg" fontWeight="normal">Teste {name}</Heading>
         
         </Flex>
         
@@ -34,4 +36,15 @@ export default function UsersCreate() {
       </Flex>
     </Box>
   )
+}
+
+export const getStaticProps: GetStaticProps<UserProps> = async () => {
+
+  const response = await api.get('/howdy')
+
+  return {
+    props: {
+      name: response.data.message,
+    },
+  };
 }
