@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head  from 'next/head';
 import { Header, Sidebar } from "../../components";
 
-export default function UsersCreate() {
+export default function RentsCreate() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,

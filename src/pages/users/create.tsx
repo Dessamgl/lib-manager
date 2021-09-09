@@ -1,10 +1,10 @@
-import { Box, Button, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue, Badge } from "@chakra-ui/react";
+import { Box, Flex, Heading, } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Head  from 'next/head';
 import { Header, Sidebar } from "../../components";
 import { GetStaticProps } from "next";
-import { api } from "../../../services/api";
+import { api } from "../../services/api";
 
 interface UserProps {
   name: string;

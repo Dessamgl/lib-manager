@@ -55,16 +55,7 @@ export default function BooksList() {
         <Box flex="1">
         <Flex justifyContent="space-between">        
         <Heading size="lg" fontWeight="normal">Livros</Heading>
-        <Link href="/books/create" passHref>
-          <Button 
-            as="a" 
-            size="md" 
-            fontSize="small" 
-            colorScheme="red" 
-          >
-            ADICIONAR
-          </Button>
-        </Link>
+        
         </Flex>
         <Box borderRadius={8} mt="8">
 
