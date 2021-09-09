@@ -5,6 +5,7 @@ import { Header, Sidebar } from "../../components";
 import { api } from "../../services/api";
 import { GetStaticProps } from "next";
 import { useState } from "react";
+import { addDays } from "date-fns";
 
 interface RentsRequest {
   users: UserProps[]
@@ -26,8 +27,7 @@ interface BookProps {
 export default function RentsCreate({ users, books }: RentsRequest) {
   const [selectedUser, setSelectedUser] = useState('');
   const [selectedBook, setSelectedBook] = useState('');
-  const [initialDate, setInitialDate] = useState(0)
-  const [finalDate, setFinalDate] = useState(0)
+  const [final, setFinal] = useState(0)
 
   const toast = useToast()
 
@@ -36,8 +36,8 @@ export default function RentsCreate({ users, books }: RentsRequest) {
       const response = await api.post('rents/create', {
         userId: selectedUser,
         bookId: selectedBook,
-        initialDate,
-        finalDate,
+        initialDate: Date.now(),
+        finalDate: addDays((Date.now()), final),
       });
 
       console.log(response.data)
@@ -130,28 +130,15 @@ export default function RentsCreate({ users, books }: RentsRequest) {
       </Box>
 
       <HStack spacing="8" w="100%">
-        <Box>
-      <Text mb="2" fontSize="12">Data inicial</Text>
-      <Input 
-          name="yearOfPublication" 
-          type="date" 
-          placeholder="Ex: 02/04/2021"
-          paddingY="7"
-          label="Ano de publicação" 
-          onChange={(e) => {setInitialDate(e.target.value)}}
-          value={initialDate}
-       />
-       </Box>
        <Box>
-      <Text mb="2" fontSize="12">Data final</Text>
+      <Text mb="2" fontSize="16">Quantos dias você deseja alugar este livro ?</Text>
       <Input 
          name="yearOfPublication" 
-         type="date" 
-         placeholder="Ex: 02/04/2021"
+         placeholder="Digite os dias"
          paddingY="7"
          label="Ano de publicação" 
-         onChange={(e) => {setFinalDate(e.target.value)}}
-         value={finalDate}
+         onChange={(e) => {setFinal(e.target.value)}}
+         value={final}
        />
           </Box>
         </HStack>
@@ -162,7 +149,7 @@ export default function RentsCreate({ users, books }: RentsRequest) {
           colorScheme="red" 
           mt="16"
           onClick={rentBook}
-          disabled={selectedBook && selectedUser && initialDate > 0 && finalDate > 0 ? false : true}
+          disabled={selectedBook && selectedUser && final > 0 ? false : true}
         >
           ALUGAR
         </Button>
